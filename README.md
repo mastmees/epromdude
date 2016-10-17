@@ -3,9 +3,9 @@
 Firmware and python code for USBtinyISP attached EPROM programmer. See project
 page http://www.nomad.ee/micros/eprom/ for hardware description  
 
-!----------------------------------------------------------------------------------!
-! uncharted waters ahead, this this code is only tested with 27C64 EPROMs this far !
-!----------------------------------------------------------------------------------!
+#
+# uncharted waters ahead, this this code is only tested with 27C64 EPROMs this far
+#
 
 firmware implements a command set where each command is
 

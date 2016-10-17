@@ -1,7 +1,7 @@
 # epromdude
 
 Firmware and python code for avrtinyusp attached EPROM programmer. See project
-page http://www.nomad.ee/eprom/ for hardware description  
+page http://www.nomad.ee/micros/eprom/ for hardware description  
 
 !----------------------------------------------------------------------------------!
 ! uncharted waters ahead, this this code is only tested with 27C64 EPROMs this far !

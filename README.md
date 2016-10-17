@@ -1,6 +1,6 @@
 # epromdude
 
-Firmware and python code for avrtinyusp attached EPROM programmer. See project
+Firmware and python code for USBtinyISP attached EPROM programmer. See project
 page http://www.nomad.ee/micros/eprom/ for hardware description  
 
 !----------------------------------------------------------------------------------!

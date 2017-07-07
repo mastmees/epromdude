@@ -131,6 +131,10 @@ class eprom:
   def set_vpp(self,vpp):
     self.command(4,0,vpp)
     self.ready_wait()
+  
+  def set_led(self,led):
+    self.command(9,0,led)
+    self.ready_wait()
     
   def write(self,d):
     self.command(5,0,d)
@@ -170,6 +174,7 @@ def cleanup():
   device.power_off()
   device.power_on()
   device.set_type(0)
+  device.set_led(0)
   device.power_off()
 
 cleanup()
@@ -179,6 +184,7 @@ def initialize():
   device.power_off()
   device.power_on()
   device.reset()
+  device.set_led(1)
   device.set_type(devices[devicename]["type"])
   if voltage!=None:
     device.set_vpp(voltages[voltage]["type"])
@@ -318,7 +324,7 @@ def program_binary():
   if readcount==0:
     readcount=devices[devicename]["size"]-address
   f=open(filename,"rb")
-  s=f.read()
+  s=f.read(readcount)
   f.close()
   if address+len(s)>memsize:
       raise FormatException("Data exceeds memory size")

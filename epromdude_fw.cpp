@@ -30,7 +30,11 @@
 
 EPROM eprom;
 
-enum PRGCOMMANDS { RESET,READ_STATUS,SEEK,SET_TYPE,SET_VPP,WRITE,READ,WRITE_INCA,READ_INCA };
+// for status indicator led
+#define green_led_on() PORTB&=~(_BV(PORTB0))
+#define green_led_off() PORTB|=_BV(PORTB0)
+
+enum PRGCOMMANDS { RESET,READ_STATUS,SEEK,SET_TYPE,SET_VPP,WRITE,READ,WRITE_INCA,READ_INCA,SET_LED };
 typedef uint32_t COMMAND;
 
 struct SPISLAVE 
@@ -112,6 +116,12 @@ uint8_t head,tail,count,rdata,error,sdata;
         // this will not have much use, but you can use it to read the actual
         // value of the new EPROM location after WRITE_INCA
         rdata=eprom.read();
+        break;
+      case SET_LED:
+        if (data)
+          green_led_on();
+        else
+          green_led_off();
         break;
     }
     count--;
@@ -240,7 +250,7 @@ PA5 4040RST                           output       1    0
 PA6 unused                            output       1    0
 PA7 unused                            output       1    0
 
-PB0 unused                            output       1    0
+PB0 green led                         output       1    1
 PB1 unused                            output       1    0
 PB2 unused                            output       1    0
 PB3 unused                            output       1    0
@@ -276,7 +286,7 @@ int main(void)
   DDRA=0xff;
   PORTA=0x00;
   DDRB=0x0f;
-  PORTB=0xf0;
+  PORTB=0xf1;
   DDRC=0x00;
   PORTC=0xff;
   DDRD=0xfe;

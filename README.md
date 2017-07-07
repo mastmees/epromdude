@@ -27,9 +27,9 @@ firmware commands
  READ_STATUS	1	X	X	X
  SEEK		2	AH	AL	X
  SET_TYPE	3	X	X	type
- SET_VPP		4	X	X	vpp
+ SET_VPP	4	X	X	vpp
  WRITE		5	X	X	data
  READ		6	X	X	X
  WRITE_INCA	7	X	X	data
  READ_INCA	8	X	X	X
-
+ SET_LED        9       X       X       0=off,1=on
